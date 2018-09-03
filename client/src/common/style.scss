@@ -1,0 +1,13 @@
+.chart{
+	background-color: #F5F2EB;
+	border: 1px solid #CCC;
+}
+.bar{
+	shape-rendering: crispEdges;
+}
+.bar-label{
+    fill: white;
+    font-family: "Arial", sans-serif;
+	text-anchor: end;
+	font-size: 18px;
+}
