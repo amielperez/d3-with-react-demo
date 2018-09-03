@@ -35,11 +35,13 @@ function plotChart() {
 		.domain([0, data.length])
         .range([0, height]);
 
-    // Create a color scale that ranges from a shade of green
+    // Create a color scale that ranges from a yellow-red color temperature
     const colorFunction = d3.scaleLinear()
-        .domain([0, data.length])
+        .domain([0, d3.max(data, function(d){
+			return d.value;
+        })])
         .interpolate(d3.interpolateHcl)
-        .range(['#6EE894', "#4A9C63"]);
+        .range(['#F7F484', "#D4332A"]);
     
     const chart = svg.append("g")
         .classed("display", true)
@@ -60,8 +62,8 @@ function plotChart() {
 			.attr("width", function(d){
 				return xFunction(d.value);
             })
-            .attr("fill", function(d, i) {
-                return colorFunction(i);
+            .attr("fill", function(d) {
+                return colorFunction(d.value);
             });
         
         chart.selectAll('.bar-label')

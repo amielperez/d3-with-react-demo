@@ -43,9 +43,9 @@ class Chart extends React.Component {
 
     getColorFunction() {
         return scaleLinear()
-            .domain([0, this.props.data.length])
+            .domain([0, this.max(this.props.data)])
             .interpolate(interpolateHcl)
-            .range(['#6EE894', "#4A9C63"]);
+            .range(['#F7F484', "#D4332A"]);
     }
 
     render() {
@@ -65,7 +65,7 @@ class Chart extends React.Component {
                                 y={this.getYFunction()(i)}
                                 height={this.getYFunction()(1) - this.barSpacing}
                                 width={this.getXFunction()(d.value)}
-                                fill={this.getColorFunction()(i)}
+                                fill={this.getColorFunction()(d.value)}
                             />
                             <text
                                 className="bar-label"
